@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         seekBar.setOnSeekBarChangeListener(this);
         cameraView = (JavaCameraView) findViewById(R.id.cameraview);
         cameraView.setVisibility(SurfaceView.VISIBLE);
-        cameraView.setCameraIndex(0);//0 for rear and 1for front
+        cameraView.setCameraIndex(0);//0 for rear and 1 for front
         
         cameraView.setCvCameraViewListener(this);
         cameraView.enableView();
