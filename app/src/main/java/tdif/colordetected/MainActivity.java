@@ -1,14 +1,18 @@
 package tdif.colordetected;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.opencv.android.CameraBridgeViewBase;
@@ -22,10 +26,12 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2, SeekBar.OnSeekBarChangeListener {
+public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2, SeekBar.OnSeekBarChangeListener, View.OnClickListener {
+
 
     static {
         if (!OpenCVLoader.initDebug()) {
@@ -62,14 +68,17 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     private JavaCameraView cameraView;
     SeekBar seekBar;
-
+    Button btnGuide;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        btnGuide = (Button) findViewById(R.id.btnGuide);
+        btnGuide.setOnClickListener(this);
         seekBar = (SeekBar) findViewById(R.id.CameraZoomControls);
         seekBar.setOnSeekBarChangeListener(this);
         cameraView = (JavaCameraView) findViewById(R.id.cameraview);
@@ -78,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         
         cameraView.setCvCameraViewListener(this);
         cameraView.enableView();
+    }
+    public void onClick(View v) {
+        Intent i = new Intent(this, Guide.class);
+
+        startActivity(i);
     }
 
     @Override

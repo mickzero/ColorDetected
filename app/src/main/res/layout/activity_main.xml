@@ -20,5 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/cameraview"
         android:layout_centerInParent="true" />
+    <Button
+        android:id="@+id/btnGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/guide"
+        />
+
 
 </RelativeLayout>
