@@ -15,7 +15,6 @@ public class Guide extends AppCompatActivity implements View.OnClickListener{
         btnCamera = (Button) findViewById(R.id.btnCamera);
         btnCamera.setOnClickListener(this);
 
-
     }
     public void onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);

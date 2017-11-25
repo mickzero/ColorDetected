@@ -12,8 +12,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
@@ -26,11 +24,10 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2, SeekBar.OnSeekBarChangeListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2, View.OnClickListener {
 
 
     static {
@@ -79,8 +76,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         setContentView(R.layout.activity_main);
         btnGuide = (Button) findViewById(R.id.btnGuide);
         btnGuide.setOnClickListener(this);
-        seekBar = (SeekBar) findViewById(R.id.CameraZoomControls);
-        seekBar.setOnSeekBarChangeListener(this);
         cameraView = (JavaCameraView) findViewById(R.id.cameraview);
         cameraView.setVisibility(SurfaceView.VISIBLE);
         cameraView.setCameraIndex(0);//0 for rear and 1 for front
@@ -115,8 +110,8 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     @Override
     public void onCameraViewStarted(int width, int height) {
-        Toast toast = Toast.makeText(MainActivity.this,width+"/"+height,Toast.LENGTH_LONG);
-        toast.show();
+        // Toast toast = Toast.makeText(MainActivity.this,width+"/"+height,Toast.LENGTH_LONG);
+        // toast.show();
     }
 
     @Override
@@ -214,20 +209,5 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
                 }
             }
         }
-    }
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
     }
 }
